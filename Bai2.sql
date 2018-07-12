@@ -6,7 +6,7 @@ Use employees_2;
 -- Dừng chức vụ hiện tại
 -- Update titles
 -- Set to_date = curdate()
--- Where titles.emp_no = '10002' AND to_date = '9999-01-01';
+-- Where titles.emp_no = 10002 AND to_date = '9999-01-01';
 
 -- Thêm chức vụ 'Senior Staff'
 -- Insert Into titles
@@ -44,16 +44,16 @@ Values ('d010', 'Bigdata & ML');
 -- Kết thúc quá trình làm việc của nhân viên ID = 10173 ở phòng ban hiện tại
 Update dept_emp
 Set to_date = curdate()
-Where emp_no = '10173' AND to_date = '9999-01-01';
+Where emp_no = 10173 AND to_date = '9999-01-01';
 
 -- Dừng chức vụ hiện tại trong bảng titles
 Update titles
 Set to_date = curdate()
-Where emp_no = '10173' AND to_date = '9999-01-01';
+Where emp_no = 10173 AND to_date = '9999-01-01';
 
 -- Thêm bản ghi vào bảng liên kết dept_emp va dept_manager
 Insert Into dept_emp
-Values ('d010', '10173', curdate(), '9999-01-01');
+Values ('10173', 'd010', curdate(), '9999-01-01');
 
 Insert Into dept_manager
 Values ('d010', '10173', curdate(), '9999-01-01');

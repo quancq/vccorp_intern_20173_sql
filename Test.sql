@@ -55,3 +55,31 @@ Where dept_emp.emp_no = '10173';
 Select *
 From titles
 Where emp_no = '10173';
+
+Select Distinct first_name
+From employees;
+
+Select *
+From salaries
+Where to_date = '9999-01-01';
+
+
+Create Temporary Table result2_bai3
+    Select employees.emp_no, concat(employees.first_name, " ", employees.last_name) as full_name,
+		SUM(salaries.salary) as salary_total
+    From employees
+    Inner Join salaries
+    ON employees.emp_no = salaries.emp_no
+    Where employees.first_name = 'Mary'
+    Group by employees.emp_no, employees.first_name, employees.last_name;
+    
+Select *
+From result1_bai3;
+
+Drop Table result1_bai3;
+
+Use employees_2;
+
+Select *
+From titles
+Where emp_no = 10001;
