@@ -16,16 +16,26 @@ public class MainApplication {
 	private static final String DB_PASSWORD = "root";
 
 	public static void main(String[] args) throws SQLException {
-		int emp_id = 100129;
-		String new_dept_id = "d007";
+		int emp_id = 100140;
+		String new_dept_id = "d002";
 		String new_title = "QA";
 
+		// Solve hw 5
 		// useCallableStatement(emp_id, new_dept_id, new_title);
 //		usePreparedStatement(emp_id, new_dept_id, new_title);
+		
+		// Solve hw 6
 		createTransaction(emp_id, new_title);
 
 	}
 
+	/**
+	 * Method to solve homework 5
+	 * @param emp_id
+	 * @param new_dept_id
+	 * @param new_title
+	 * @throws SQLException
+	 */
 	private static void useCallableStatement(int emp_id, String new_dept_id, String new_title) throws SQLException {
 		Connection dbConnection = null;
 		CallableStatement stmt = null;
@@ -79,9 +89,17 @@ public class MainApplication {
 		}
 	}
 
+	/**
+	 * Method to solve homework 5
+	 * @param emp_id
+	 * @param new_dept_id
+	 * @param new_title
+	 * @throws SQLException
+	 */
 	private static void usePreparedStatement(int emp_id, String new_dept_id, String new_title) throws SQLException {
 		Connection dbConnection = null;
 		PreparedStatement stmt = null;
+		ResultSet rs = null;
 
 		try {
 			dbConnection = getDBConnection();
@@ -95,7 +113,7 @@ public class MainApplication {
 				stmt.setString(2, new_dept_id);
 				stmt.setString(3, new_title);
 
-				ResultSet rs = stmt.executeQuery();
+				rs = stmt.executeQuery();
 				rs.next();
 
 				int out_emp_id = rs.getInt("out_emp_id");
@@ -120,6 +138,9 @@ public class MainApplication {
 			ex.printStackTrace();
 		} finally {
 			if (dbConnection != null) {
+				if(rs != null) {
+					rs.close();
+				}
 				if (stmt != null) {
 					stmt.close();
 				}
@@ -128,6 +149,12 @@ public class MainApplication {
 		}
 	}
 
+	/**
+	 * Method to solve homework 6
+	 * @param emp_id
+	 * @param new_title
+	 * @throws SQLException
+	 */
 	private static void createTransaction(int emp_id, String new_title) throws SQLException {
 		Connection dbConnection = null;
 		PreparedStatement stmt = null;
@@ -167,9 +194,8 @@ public class MainApplication {
 					// Rollback
 					stmt.executeQuery("Rollback to sv_point");
 					stmt.executeQuery("Release Savepoint sv_point");
-					
-				} 
 				
+				} 
 
 			}
 		} catch (Exception ex) {

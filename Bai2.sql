@@ -4,13 +4,13 @@ Use employees_2;
 -- Lưu ý, phải dừng chức vụ hiện tại mới được chuyển chức vụ mới.
 
 -- Dừng chức vụ hiện tại
--- Update titles
--- Set to_date = curdate()
--- Where titles.emp_no = 10002 AND to_date = '9999-01-01';
+Update titles
+Set to_date = curdate()
+Where titles.emp_no = 10002 AND to_date = '9999-01-01';
 
 -- Thêm chức vụ 'Senior Staff'
--- Insert Into titles
--- Values ('10002', 'Senior Staff', curdate(), '9999-01-01')
+Insert Into titles
+Values ('10002', 'Senior Staff', curdate(), '9999-01-01');
 
 
 -- =============================================================

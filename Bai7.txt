@@ -1,0 +1,11 @@
+1. Khái niệm Index trong SQL.
+	- Là cấu trúc cho phép truy vấn nhanh dữ liệu trong cơ sở dữ liệu. Index có thể tạp trên 1 cột hoặc nhóm các cột, sử dụng cây BBST và danh sách kết nối đôi để duy trì thứ tự giá trị của các bản ghi tương ứng với các cột index.
+	- Ưu điểm : giúp tăng hiệu năng truy vấn
+	- Nhược điểm : tốn bộ nhớ, phải cập nhật index mỗi khi cập nhật cột index của các bản ghi
+2. Trường hợp nên sử dụng Index
+	- Nên đánh index trên các cột có lượng lớn truy vấn chỉ đọc, tốc độ cải thiện khi các cột được index xuất hiện trong mệnh đề Where, Order by, Group by, và khi Join các bảng mà cột chung là cột index (ngoài ra, nên đánh index trên Primary và Foregin key).
+
+3. Trường hợp không nên sử dụng Index
+	- Khi bảng chứa ít bản ghi, hoặc hầu hết các truy vấn đều lấy ra hầu hết các bản ghi trong bảng
+	- Khi thao tác trên cột index chủ yếu là Insert, Update, Delete
+	- Không đánh index trên cột chứa nhiều giá trị trùng nhau (ví dụ như nhiều giá trị NULL)
